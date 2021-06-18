@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:savemymoney/src/models/navigation_bar_model.dart';
 
 class MyNavigationBar extends StatelessWidget {
 
@@ -16,6 +18,9 @@ class MyNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final navigationBarModel = Provider.of<NavigationBarModel>(context);
+
     return BottomAppBar(
       color: Colors.white,
       elevation: 0,
@@ -29,55 +34,41 @@ class MyNavigationBar extends StatelessWidget {
               iconSize: this.iconSize,
               color: this.selectedColor,
               icon: Icon(Icons.home),
-              onPressed: () {},
+              onPressed: () {
+                navigationBarModel.currentTab = 0;
+                Navigator.pushReplacementNamed(context, 'home');
+              },
             ),
             IconButton(
               tooltip: 'Search',
               iconSize: 35,
               icon: Icon(Icons.pie_chart_sharp),
-              onPressed: () {},
+              onPressed: () {
+                navigationBarModel.currentTab = 1;
+                Navigator.pushReplacementNamed(context, 'overview');
+              },
             ),
             IconButton(
               tooltip: 'Search',
               iconSize: 35,
               icon: Icon(Icons.history),
-              onPressed: () {},
+              onPressed: () {
+                navigationBarModel.currentTab = 2;
+                Navigator.pushReplacementNamed(context, 'transactions');
+              },
             ),
             IconButton(
               tooltip: 'Favorite',
               iconSize: 35,
               icon: Icon(Icons.person),
-              onPressed: () {},
+              onPressed: () {
+                navigationBarModel.currentTab = 3;
+                Navigator.pushReplacementNamed(context, 'profile');
+              },
             ),
           ],
         ),
       ),
     );
-    // return Container(
-    //   color: Colors.red,
-    //   child: BottomNavigationBar(
-    //     currentIndex: 1,
-    //     selectedItemColor:  Color(0xff27DFFB),
-    //     elevation: 12,
-    //     items: <BottomNavigationBarItem>[
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.home),
-    //         label: '',
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.pie_chart_sharp),
-    //         label: ''
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.history),
-    //         label: ''
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: Icon(Icons.person),
-    //         label: ''
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }

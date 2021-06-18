@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:savemymoney/src/pages/home_page.dart';
+import 'package:savemymoney/src/pages/main_page.dart';
+import 'package:savemymoney/src/routes/routes.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,7 +11,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Save My Money',
-      home: HomePage(),
+      home: MainPage(),
+      routes: appRoutes(),
     );
   }
 }

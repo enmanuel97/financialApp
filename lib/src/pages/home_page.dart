@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:savemymoney/src/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -11,40 +12,16 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Text('Home Page'),
       ),
-      floatingActionButton: _AddTransactionsButton(),
-      bottomNavigationBar: _MyNavBars(),
-    );
-  }
-
-  FloatingActionButton _AddTransactionsButton() {
-    return FloatingActionButton(
-      child: Icon(Icons.add),
-      onPressed: () {},
-    );
-  }
-
-  Widget _MyNavBars() {
-    return Container(
-      child: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: ''
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pie_chart_sharp),
-            label: ''
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: ''
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: ''
-          ),
-        ],
+      floatingActionButton: MyFloatingButton(
+        primaryColor: Color(0xff3895F5),
+        secundaryColor: Color(0xff27DFFB),
+        hasGradient: true,
+        onPressed: () { 
+          print('Hola Mundo');
+        },
+        child: Icon(Icons.add),
       ),
+      bottomNavigationBar: MyNavigationBar(),
     );
   }
 }

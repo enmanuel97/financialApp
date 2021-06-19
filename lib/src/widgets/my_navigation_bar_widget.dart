@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:savemymoney/src/models/navigation_bar_model.dart';
+import 'package:savemymoney/src/providers/navigation_bar_provider.dart';
 
 class MyNavigationBar extends StatelessWidget {
 
@@ -19,7 +19,7 @@ class MyNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final navigationBarModel = Provider.of<NavigationBarModel>(context);
+    final navigationBarModel = Provider.of<NavigationBarProvider>(context);
 
     return BottomAppBar(
       color: Colors.white,
@@ -35,7 +35,7 @@ class MyNavigationBar extends StatelessWidget {
               color: this.selectedColor,
               icon: Icon(Icons.home),
               onPressed: () {
-                navigationBarModel.currentTab = 0;
+                navigationBarModel.currentPage = 0;
                 Navigator.pushReplacementNamed(context, 'home');
               },
             ),
@@ -44,7 +44,7 @@ class MyNavigationBar extends StatelessWidget {
               iconSize: 35,
               icon: Icon(Icons.pie_chart_sharp),
               onPressed: () {
-                navigationBarModel.currentTab = 1;
+                navigationBarModel.currentPage = 1;
                 Navigator.pushReplacementNamed(context, 'overview');
               },
             ),
@@ -53,7 +53,7 @@ class MyNavigationBar extends StatelessWidget {
               iconSize: 35,
               icon: Icon(Icons.history),
               onPressed: () {
-                navigationBarModel.currentTab = 2;
+                navigationBarModel.currentPage = 2;
                 Navigator.pushReplacementNamed(context, 'transactions');
               },
             ),
@@ -62,7 +62,7 @@ class MyNavigationBar extends StatelessWidget {
               iconSize: 35,
               icon: Icon(Icons.person),
               onPressed: () {
-                navigationBarModel.currentTab = 3;
+                navigationBarModel.currentPage = 3;
                 Navigator.pushReplacementNamed(context, 'profile');
               },
             ),

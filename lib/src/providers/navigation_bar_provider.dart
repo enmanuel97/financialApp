@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NavigationBarModel with ChangeNotifier {
+class NavigationBarProvider with ChangeNotifier {
 
   int _currentPage = 0;
 
@@ -8,6 +8,7 @@ class NavigationBarModel with ChangeNotifier {
 
   set currentPage(int page) {
     this._currentPage = page;
+    print('Current page $_currentPage');
     notifyListeners();
   }
 }

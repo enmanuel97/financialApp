@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class NavigationBarModel with ChangeNotifier {
 
-  int _currentTab = 0;
+  int _currentPage = 0;
 
-  int get currentTab => this._currentTab;
+  int get currentPage => this._currentPage;
 
-  set currentTab(int index) {
-    this._currentTab = index;
+  set currentPage(int page) {
+    this._currentPage = page;
     notifyListeners();
   }
 }

@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
     double availableHeight= mediaQuery.size.height - mediaQuery.padding.top - mediaQuery.padding.bottom;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Container(
@@ -29,9 +29,9 @@ class HomePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              _customAppBar(availableHeight, mediaQuery.padding.top),
-              _balance(availableHeight),
-              _options(availableHeight),
+              _customAppBar(mediaQuery.padding.top),
+              _balance(),
+              _options(),
               _transactions(context, availableHeight),
             ],
           ),
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _customAppBar(double height, double padding) {
+  Widget _customAppBar(double padding) {
     return Container(
       padding: EdgeInsets.only(top: padding + 20, right: 20, left: 20),
       child: Row(
@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _balance(double height) {
+  Widget _balance() {
     return Container(
       padding: EdgeInsets.only(top: 30),
       child: Column(
@@ -122,7 +122,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _options(double height) {
+  Widget _options() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 30),
       child: Row(
@@ -140,6 +140,8 @@ class HomePage extends StatelessWidget {
   Widget _transactions(BuildContext context, double height) {
 
     final items = <Transaction>[
+      new Transaction(icon: Icons.facebook, name: 'Netflixf', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.monetization_on, name: 'Joe Ramon', date: '3 March', amount: '\$8.99', type: 'Bank Transfer', iconColor: Colors.yellow, amountColor: Color(0xff71D798)),
       new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
       new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
       new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
@@ -148,9 +150,6 @@ class HomePage extends StatelessWidget {
       new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
       new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
       new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
-      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
-      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
-      // new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
     ];
 
     return Container(
@@ -162,7 +161,7 @@ class HomePage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(left: 30, right: 30, top: 35),
+            padding: EdgeInsets.only(left: 30, right: 30, top: 35, bottom: 10),
             child: Row(
               children: <Widget>[
                 Text('Last Transactions', style: TextStyle(
@@ -197,7 +196,7 @@ class HomePage extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 30),
                         child: TransactionItems(
                           transaction: items[index],
-                          padding: EdgeInsets.only(bottom: (index == (items.length - 1)) ? 35 : 15, top: (index == 0) ? 20 : 0),
+                          padding: EdgeInsets.only(bottom: (index == (items.length - 1)) ? 35 : 15, top: (index == 0) ? 10 : 0),
                         ),
                       ); 
                     },
@@ -207,29 +206,6 @@ class HomePage extends StatelessWidget {
               ],
             ),
           )
-          // Flexible(
-          //   flex: 5,
-          //   child: Container(
-          //     height: double.infinity,
-          //     padding: EdgeInsets.symmetric(horizontal: 30),
-          //     child: NotificationListener<OverscrollIndicatorNotification>(
-          //       onNotification: (overscroll) {
-          //         overscroll.disallowGlow();
-          //         return true;
-          //       },
-          //       child: ListView.builder(
-          //         shrinkWrap: true,
-          //         itemCount: items.length,
-          //         itemBuilder: (context, index) {
-                    // return TransactionItems(
-                    //   transaction: items[index],
-                    //   padding: (index == (items.length - 1)) ? EdgeInsets.only(bottom: 35) : EdgeInsets.only(bottom: 15),
-                    // );
-          //         },
-          //       ),
-          //     ),
-          //   ),
-          // )
         ],
       ),
     );

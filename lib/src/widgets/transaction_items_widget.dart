@@ -30,6 +30,7 @@ class TransactionItems extends StatelessWidget {
           ),
           SizedBox(width: 20),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(this.transaction.name, style: TextStyle(
                 color: Color(0xff425587),

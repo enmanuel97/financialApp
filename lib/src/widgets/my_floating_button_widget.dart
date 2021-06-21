@@ -20,12 +20,11 @@ class MyFloatingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       elevation: 0,
-      backgroundColor: this.primaryColor,
       child: Container(
         width: double.infinity,
         height: double.infinity,
         child: this.child,
-        decoration: BoxDecoration(
+        decoration: (this.hasGradient) ? BoxDecoration(
           shape: BoxShape.circle,
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -35,6 +34,9 @@ class MyFloatingButton extends StatelessWidget {
               Color(0xff27DFFB)
             ]
           )
+        ) : BoxDecoration(
+          shape: BoxShape.circle,
+          color: this.primaryColor
         ),
       ),
       onPressed: this.onPressed

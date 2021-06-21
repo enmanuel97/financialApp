@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:savemymoney/src/class/transaction_class.dart';
 import 'package:savemymoney/src/providers/navigation_bar_provider.dart';
+import 'package:savemymoney/src/widgets/transaction_items_widget.dart';
 import 'package:savemymoney/src/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -47,7 +49,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _customAppBar(double height, double padding) {
+  Widget _customAppBar(double height, double padding) {
     return Container(
       padding: EdgeInsets.only(top: padding + 20, right: 20, left: 20),
       child: Row(
@@ -77,14 +79,16 @@ class HomePage extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.notifications_outlined, size: 30, color: Colors.white),
-                onPressed: () {},
+                onPressed: () {
+                  print('Notification option');
+                },
               ),
               Positioned(
                 bottom: 22,
                 right: 14,
                 child: Container(
-                  height: 10,
-                  width: 10,
+                  height: 9,
+                  width: 9,
                   decoration: BoxDecoration(
                     color: Color(0xffF74F4F),
                     shape: BoxShape.circle
@@ -98,7 +102,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _balance(double height) {
+  Widget _balance(double height) {
     return Container(
       padding: EdgeInsets.only(top: 30),
       child: Column(
@@ -118,92 +122,16 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _options(double height) {
+  Widget _options(double height) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Column(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(0xff27DFFB).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12),
-                  // boxShadow: <BoxShadow>[
-                  //   BoxShadow(
-                  //     color: Color(0xff3895F5),
-                  //     blurRadius: 3,
-                  //     offset: Offset(0, 5),
-                  //     spreadRadius: 3
-                  //   )
-                  // ]
-                ),
-                child: Icon(Icons.send, color: Colors.white),
-              ),
-              SizedBox(height: 10),
-              Text('Send', style: TextStyle(
-                color: Colors.white,
-                fontSize: 15
-              ))
-            ],
-          ),
-          Column(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(0xff27DFFB).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12)
-                ),
-                child: Icon(Icons.topic_outlined, color: Colors.white),
-              ),
-              SizedBox(height: 10),
-              Text('Top Up', style: TextStyle(
-                color: Colors.white,
-                fontSize: 15
-              ))
-            ],
-          ),
-          Column(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(0xff27DFFB).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12)
-                ),
-                child: Icon(Icons.attach_money_sharp, color: Colors.white),
-              ),
-              SizedBox(height: 10),
-              Text('Pay', style: TextStyle(
-                color: Colors.white,
-                fontSize: 15
-              ))
-            ],
-          ),
-          Column(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(0xff27DFFB).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12)
-                ),
-                child: Icon(Icons.grid_view_outlined, color: Colors.white),
-              ),
-              SizedBox(height: 10),
-              Text('More', style: TextStyle(
-                color: Colors.white,
-                fontSize: 15
-              ))
-            ],
-          ),
+          OptionButton(title: 'Send', icon: Icons.send, color: Color(0xff27DFFB)),
+          OptionButton(title: 'Top Up', icon: Icons.topic_outlined, color: Color(0xff27DFFB)),
+          OptionButton(title: 'Pay', icon: Icons.attach_money_sharp, color: Color(0xff27DFFB)),
+          OptionButton(title: 'More', icon: Icons.grid_view_outlined, color: Color(0xff27DFFB)),
         ],
       ),
     );
@@ -211,7 +139,19 @@ class HomePage extends StatelessWidget {
 
   Widget _transactions(BuildContext context, double height) {
 
-    final items = List<String>.generate(10, (i) => 'Item ${i + 1}');
+    final items = <Transaction>[
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      // new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+    ];
 
     return Container(
       height: height * 0.60,
@@ -222,7 +162,7 @@ class HomePage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(left: 30, right: 30, top: 35, bottom: 0),
+            padding: EdgeInsets.only(left: 30, right: 30, top: 35),
             child: Row(
               children: <Widget>[
                 Text('Last Transactions', style: TextStyle(
@@ -247,66 +187,49 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: NotificationListener<OverscrollIndicatorNotification>(
-                onNotification: (overscroll) {
-                  overscroll.disallowGlow();
-                  return true;
-                },
-                child: ListView.builder(
-                  itemCount: items.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      padding: (index == (items.length - 1)) ? EdgeInsets.only(bottom: 35) : EdgeInsets.only(bottom: 15),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            height: 50,
-                            width: 50,
-                            child: Icon(Icons.facebook),
-                            decoration: BoxDecoration(
-                              color: Colors.red.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(12)
-                            ),
-                          ),
-                          SizedBox(width: 20),
-                          Column(
-                            children: <Widget>[
-                              Text('Netflix', style: TextStyle(
-                                color: Color(0xff425587),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500
-                              )),
-                              Text('7 March', style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black.withOpacity(0.5)
-                              ))
-                            ],
-                          ),
-                          Spacer(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              Text('-\$8.99', style: TextStyle(
-                                color: Color(0xffF66061),
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold
-                              )),
-                              Text('Subscription', style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black.withOpacity(0.5)
-                              ))
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
+            child: CustomScrollView(
+              slivers: [
+                Container(
+                  child: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return Container(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: TransactionItems(
+                          transaction: items[index],
+                          padding: EdgeInsets.only(bottom: (index == (items.length - 1)) ? 35 : 15, top: (index == 0) ? 20 : 0),
+                        ),
+                      ); 
+                    },
+                    childCount: items.length
+                  )),
+                )
+              ],
             ),
           )
+          // Flexible(
+          //   flex: 5,
+          //   child: Container(
+          //     height: double.infinity,
+          //     padding: EdgeInsets.symmetric(horizontal: 30),
+          //     child: NotificationListener<OverscrollIndicatorNotification>(
+          //       onNotification: (overscroll) {
+          //         overscroll.disallowGlow();
+          //         return true;
+          //       },
+          //       child: ListView.builder(
+          //         shrinkWrap: true,
+          //         itemCount: items.length,
+          //         itemBuilder: (context, index) {
+                    // return TransactionItems(
+                    //   transaction: items[index],
+                    //   padding: (index == (items.length - 1)) ? EdgeInsets.only(bottom: 35) : EdgeInsets.only(bottom: 15),
+                    // );
+          //         },
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );

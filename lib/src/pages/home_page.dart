@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
           ),
           Spacer(),
           Stack(
-            children: [
+            children: <Widget>[
               IconButton(
                 icon: Icon(Icons.notifications_outlined, size: 30, color: Colors.white),
                 onPressed: () {

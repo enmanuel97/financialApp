@@ -15,7 +15,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
 
   int pageIndex = 0;
-  List<Widget> pages = [
+  List<Widget> pages = <Widget>[
     HomePage(),
     OverviewPage(),
     TransactionsPage(),

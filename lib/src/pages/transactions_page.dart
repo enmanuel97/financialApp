@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:savemymoney/src/class/expandable_item_class.dart';
+import 'package:savemymoney/src/class/transaction_class.dart';
+import 'package:savemymoney/src/widgets/transaction_history_widget.dart';
+import 'package:savemymoney/src/widgets/transaction_items_widget.dart';
 
 class TransactionsPage extends StatefulWidget {
 
@@ -21,6 +25,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
           children: [
             _customAppBar(mediaQuery.padding.top),
             _titleAndFilters(),
+            _transactions()
           ],
         ),
       )
@@ -74,6 +79,36 @@ class _TransactionsPageState extends State<TransactionsPage> {
             }).toList(),
           )
         ],
+      ),
+    );
+  }
+
+  Widget _transactions() {
+
+    final transactionItems = <Transaction>[
+      new Transaction(icon: Icons.facebook, name: 'Netflixf', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.monetization_on, name: 'Joe Ramon', date: '3 March', amount: '\$8.99', type: 'Bank Transfer', iconColor: Colors.yellow, amountColor: Color(0xff71D798)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      // new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      // new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      // new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      // new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+      // new Transaction(icon: Icons.facebook, name: 'Netflix', date: '7 March', amount: '-\$8.99', type: 'Subscription', iconColor: Colors.red, amountColor: Color(0xffF66061)),
+    ];
+
+    final items = transactionItems.map((e) => TransactionItems(transaction: e)).toList();
+
+    final List<ExpandableItem> _data = [
+      new ExpandableItem(items: items, headerValue: 'Transfer', icon: Icons.send, iconColor: Colors.orange),
+      new ExpandableItem(items: items, headerValue: 'Entertain', icon: Icons.play_arrow_rounded, iconColor: Colors.red),
+    ];
+
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        child: TransactionHistory(_data),
       ),
     );
   }

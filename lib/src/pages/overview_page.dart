@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:savemymoney/src/widgets/chart_test.dart';
+import 'package:savemymoney/src/widgets/my_chart_widget.dart';
 
 class OverviewPage extends StatefulWidget {
 
@@ -167,7 +167,7 @@ class _OverviewPageState extends State<OverviewPage> {
   }
 
   Widget _chart() {
-    return BarChartSample2();
+    return MyChart();
   }
 
   Widget _overdrafAlert(BuildContext contect) {

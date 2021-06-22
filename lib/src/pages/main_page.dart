@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:savemymoney/src/providers/navigation_bar_provider.dart';
 import 'package:savemymoney/src/pages/home_page.dart';
 import 'package:savemymoney/src/pages/overview_page.dart';
-import 'package:savemymoney/src/pages/profile_page.dart';
 import 'package:savemymoney/src/pages/transactions_page.dart';
-import 'package:savemymoney/src/providers/navigation_bar_provider.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -19,7 +18,6 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     OverviewPage(),
     TransactionsPage(),
-    ProfilePage(),
   ];
 
   @override
@@ -45,7 +43,6 @@ class _MainPageState extends State<MainPage> {
       Icons.home,
       Icons.pie_chart_sharp,
       Icons.history,
-      Icons.person
     ];
 
     return AnimatedBottomNavigationBar(

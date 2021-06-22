@@ -1,12 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class BarChartSample2 extends StatefulWidget {
+class MyChart extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => BarChartSample2State();
+  State<StatefulWidget> createState() => MyChartState();
 }
 
-class BarChartSample2State extends State<BarChartSample2> {
+class MyChartState extends State<MyChart> {
   final Color leftBarColor = Color(0xff3895F5);
   final Color rightBarColor = Color(0xff27DFFB);
   final double width = 10;

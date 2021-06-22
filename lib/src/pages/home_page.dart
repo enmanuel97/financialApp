@@ -187,6 +187,7 @@ class HomePage extends StatelessWidget {
           ),
           Expanded(
             child: CustomScrollView(
+              physics: BouncingScrollPhysics(),
               slivers: [
                 Container(
                   child: SliverList(

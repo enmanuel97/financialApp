@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:savemymoney/src/class/expandable_item_class.dart';
 
 class TransactionHistory extends StatefulWidget {
-  late List<ExpandableItem> data;
+  final List<ExpandableItem> data;
 
-  TransactionHistory(this.data);
+  const TransactionHistory(this.data, {Key? key}) : super(key: key);
 
   @override
   State<TransactionHistory> createState() => _TransactionHistoryState();

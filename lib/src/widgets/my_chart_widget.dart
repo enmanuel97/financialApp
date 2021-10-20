@@ -54,7 +54,7 @@ class MyChartState extends State<MyChart> {
                   show: true,
                   bottomTitles: SideTitles(
                     showTitles: true,
-                    getTextStyles: (value) => TextStyle(color: Color(0xff7589a2), fontWeight: FontWeight.bold, fontSize: 14),
+                    getTextStyles: (context, value) => TextStyle(color: Color(0xff7589a2), fontWeight: FontWeight.bold, fontSize: 14),
                     margin: 10,
                     getTitles: (double value) {
                       switch (value.toInt()) {
@@ -77,7 +77,7 @@ class MyChartState extends State<MyChart> {
                   ),
                   leftTitles: SideTitles(
                     showTitles: true,
-                    getTextStyles: (value) => TextStyle(color: Color(0xff7589a2), fontWeight: FontWeight.bold, fontSize: 14),
+                    getTextStyles: (context, value) => TextStyle(color: Color(0xff7589a2), fontWeight: FontWeight.bold, fontSize: 14),
                     margin: 25,
                     reservedSize: 14,
                     getTitles: (value) {
